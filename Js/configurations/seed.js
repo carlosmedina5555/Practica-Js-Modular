@@ -11,6 +11,18 @@ const INITIAL_ROLES = [{
     description: "Admin",
 }];
 
+
+const SEMINARS = [
+    {
+        id:1,
+        name: "Introducion a html",
+        description: "Charla dedicada por un experto en html",
+        date: Date.now(),
+        time: "18hs",
+        picture: "...",
+        speakers:"",
+    }
+]
 const ROLES_VALUES = {
     DISERTANTE: 1,
     CONCURRENTE: 2,
@@ -19,4 +31,4 @@ const ROLES_VALUES = {
 
 
 
-export {INITIAL_ROLES, ROLES_VALUES};
+export {INITIAL_ROLES, ROLES_VALUES, SEMINARS};
