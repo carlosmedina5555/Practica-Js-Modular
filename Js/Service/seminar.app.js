@@ -3,35 +3,59 @@ import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 
 
 //#region Get User (R - Read - leer)
-function GetSeminars () {
-    return GetItem(LOCAL_STORAGE_KEYS.seminar);
+function getSeminars () {
+    let seminar = GetItem(LOCAL_STORAGE_KEYS.seminar);
+
+    if(seminar !== null){
+        seminar.forEach(seminar => {
+            seminar.modifySeminar = modifySeminar;
+        });
+    }
 }
 //#endregion
 function createSeminar (title, description, date, time, picture, speakers) {
     let seminars = getArrayAndReplace({title, description, date, time, picture, speakers});
     SetItem(LOCAL_STORAGE_KEYS.seminar, seminars);
 };
-
-
-function createrUserRolCommon(username, password, name, lastname) {
-    createUser(
-      username,
-      password,
-      name,
-      lastname,
-      INITIAL_ROLES.find((rol) => rol.id === ROLES_VALUES.CONCURRENTE)
-    );
-  }
-
   
-function getArrayAndReplace(newUser) {
-    let users = GetUsers()
+function getArrayAndReplace(newSeminar) {
+    let seminars = getSeminars()
         
     if(users === null) {
-        users = [];
+        seminars = [];
     }
-    users.push(newUser)
-    return users;
+    users.push(newSeminar)
+    return seminars;
 }
 
-//#endregion
+function updateSeminar(id, title, description, date, time, picture, speakers){
+    const seminars = getSeminars(); 
+    if(seminars !== null && seminars.length > 0) {
+        let index = seminars.findIndex(function(seminar){
+            return seminar.id === id;
+        });
+
+        let seminar = seminars[index];
+        seminar.title = title;
+        seminar.description = description;
+        seminar.date = date;
+        seminar.time = time;
+        seminar.picture = picture;
+        seminar.speakers = speakers;
+        seminar[index] = seminar;
+        SetItem(LOCAL_STORAGE_KEYS.seminar, seminars)
+    }
+}
+
+
+function deleteSeminar(id){
+    const seminars = getSeminars();
+    if(seminars !== null && seminars.length > 0){
+        let newSeminarArray = seminars.filter(function(seminar){
+            seminar.id !== id
+        })
+        SetItem(LOCAL_STORAGE_KEYS.seminar, newSeminarArray)
+    }
+}
+
+export {getSeminars, createSeminar, deleteSeminar, updateSeminar}

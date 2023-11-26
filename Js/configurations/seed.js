@@ -23,6 +23,7 @@ const SEMINARS = [
         speakers:"",
     }
 ]
+
 const ROLES_VALUES = {
     DISERTANTE: 1,
     CONCURRENTE: 2,

@@ -17,7 +17,7 @@ function GetErrorNotMatch () {
 
 
 //#region Get User (R - Read - leer)
-function GetUsers () {
+function getUsers () {
     return GetItem(LOCAL_STORAGE_KEYS.user);
 }
 //#endregion
@@ -41,7 +41,7 @@ function createrUserRolCommon(username, password, name, lastname) {
 
   
 function getArrayAndReplace(newUser) {
-    let users = GetUsers()
+    let users = getUsers()
         
     if(users === null) {
         users = [];
@@ -55,8 +55,8 @@ function getArrayAndReplace(newUser) {
 //#region login y logout
 
 function login (username, password) {
-    let users = GetUsers();
-    if(users === null) {
+    let users = getUsers();
+    if(!users) {
       return GetErrorNotFound()
     }
     let userFound = users.find((user) => user.username === username);
@@ -68,7 +68,7 @@ function login (username, password) {
       return GetErrorNotMatch()
         }
 
-    SetItem(LOCAL_STORAGE_KEYS.activeUser.userFound);
+    SetItem(LOCAL_STORAGE_KEYS.activeUser, userFound);
     delete userFound.password;
         return { 
             ok: true,
@@ -80,4 +80,4 @@ function logout () {
     RemoveItem(LOCAL_STORAGE_KEYS.activeUser);
 }
 //#endregion
-export {createUser, login, logout, createrUserRolCommon}
+export {createUser, login, logout, createrUserRolCommon, getUsers }
