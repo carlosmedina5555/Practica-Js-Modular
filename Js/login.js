@@ -7,7 +7,7 @@ import { SwalAlerts } from "./helpers/swal.helpers.js";
 const email = document.getElementById("email")
 const password = document.getElementById("password")
 const btnLogin = document.getElementById("login")
-const btnClose = document.getElementById("close")
+const btnLogout = document.getElementById("logout")
 
 let _email, _password =  "";
 //#endregion Variables
@@ -45,9 +45,9 @@ btnLogin.addEventListener("click", function(){
     }
 })
 
-btnlogout.addEventListener("click", function(){
+btnLogout.addEventListener("click", function(){
     logout()
-    window.location.reload();
+    window.location.href = "/";
 })
 
 //#endregion Events

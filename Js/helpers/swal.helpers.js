@@ -10,7 +10,7 @@
         Swal.fire({
             title: title,
             text: text,
-            icon:"error",
+            icon:"success",
             confirmButtonText: "Ok", 
         })
     } 

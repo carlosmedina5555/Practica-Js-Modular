@@ -4,13 +4,14 @@ import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 
 //#region Get User (R - Read - leer)
 function getSeminars () {
-    let seminar = GetItem(LOCAL_STORAGE_KEYS.seminar);
+    let seminars = GetItem(LOCAL_STORAGE_KEYS.seminar);
 
-    if(seminar !== null){
-        seminar.forEach(seminar => {
-            seminar.modifySeminar = modifySeminar;
+    if(seminars !== null){
+        seminars.forEach(seminar => {
+            seminar.modifySeminar = updateSeminar;
         });
     }
+    return seminars;
 }
 //#endregion
 function createSeminar (title, description, date, time, picture, speakers) {
