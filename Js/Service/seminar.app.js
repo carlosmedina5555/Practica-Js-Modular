@@ -4,14 +4,7 @@ import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 
 //#region Get User (R - Read - leer)
 function getSeminars () {
-    let seminars = GetItem(LOCAL_STORAGE_KEYS.seminar);
-
-    if(seminars !== null){
-        seminars.forEach(seminar => {
-            seminar.modifySeminar = updateSeminar;
-        });
-    }
-    return seminars;
+    return GetItem(LOCAL_STORAGE_KEYS.seminar);
 }
 //#endregion
 function createSeminar (title, description, date, time, picture, speakers) {
@@ -59,4 +52,9 @@ function deleteSeminar(id){
     }
 }
 
-export {getSeminars, createSeminar, deleteSeminar, updateSeminar}
+
+function getSeminarById(id){
+    const seminars = getSeminars();
+    return seminars.find((seminar) => seminar.id === id)
+}
+export {getSeminars, createSeminar, deleteSeminar, updateSeminar, getSeminarById}
