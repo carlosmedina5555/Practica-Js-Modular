@@ -1,12 +1,17 @@
 import { getUsers } from "./Service/user.app.js";
-import { getSeminars } from "./Service/seminar.app.js";
+import { deleteSeminar, getSeminars } from "./Service/seminar.app.js";
 import { getSeminarById } from "./Service/seminar.app.js";
 
 //#region HTML References
 const usersTable = document.getElementById("users-table");
-const seminarstable = document.getElementById("seminars-table")
+const seminarsTable = document.getElementById("seminars-table")
 const deleteSeminarBtn = document.getElementById("deleteSeminar")
-const cancelDeleteSeminarBtn = document.getElementById("cancelDeleteSeminar")
+const updateSeminarBtn = document.getElementById("update")
+const updatePicture = document.getElementById("picture");
+const updateDifficult = document.getElementById("difficult");
+const updateStars = document.getElementById("stars");
+const updateDescription = document.getElementById("descriptionTxtArea");
+const updateTitle = document.getElementById("title");
 //#endregion HTML References
 
 
@@ -30,6 +35,16 @@ refresh(refreshUsers)
 refresh(refreshSeminars)
 //#endregion InitData
 
+//#region Events
+deleteSeminarBtn.addEventListener("click", () => {
+    deleteSeminar(currents.seminar.id);
+    window.location.reload()
+})
+
+updateSeminarBtn.addEventListener("click", () =>{
+    currents.seminar;
+})
+
 
 //#region Functions
 function refreshUsers(){
@@ -42,6 +57,8 @@ function refreshUsers(){
 }
 
 function refreshSeminars() {
+
+    seminarsTable.innerHTML = "";
     data.seminars = getSeminars()
     if(data.seminars) {
         data.seminars.forEach((seminar) => {
@@ -67,20 +84,34 @@ function refreshSeminars() {
             tr.appendChild(tdRank);
             tr.appendChild(tdActions);
 
-            seminarstable.appendChild(tr);
+            seminarsTable.appendChild(tr);
         })
 
         data.seminars.forEach((seminar) => {
            const btnModify = document.getElementById(seminar.id);
-           if(btnModify){
+           if (btnModify) {
             btnModify.addEventListener("click", (e) => {
-                currents.seminar = getSeminarById(e.target.parentElement.id);
-               })
-           }
-           
-        })
+              console.log(e.target.parentElement.id);
+              currents.seminar = getSeminarById(e.target.parentElement.id);
+    
+              if (currents.seminar) {
+                updateTitle.value = currents.seminar.title;
+                updatePicture.value = currents.seminar.picture;
+                updateDifficult.value = currents.seminar.difficult;
+                updateStars.value = currents.seminar.stars;
+                updateDescription.value = currents.seminar.description;
+              } else {
+                updateTitle.value = "";
+                updatePicture.value = "";
+                updateDifficult.value = "";
+                updateStars.value = "";
+                updateDescription.value = "";
+              }
+            });
+          }
+        });
+      }
     }
-}
 
 
 function getEmojiText(number) {

@@ -42,15 +42,17 @@ function updateSeminar(id, title, description, date, time, picture, speakers){
 }
 
 
-function deleteSeminar(id){
+function deleteSeminar(id) {
     const seminars = getSeminars();
-    if(seminars !== null && seminars.length > 0){
-        let newSeminarArray = seminars.filter(function(seminar){
-            seminar.id !== id
-        })
-        SetItem(LOCAL_STORAGE_KEYS.seminar, newSeminarArray)
+  
+    if (seminars !== null && seminars.length > 0) {
+      let newSeminarsArray = seminars.filter(function (seminar) {
+        return seminar.id !== id;
+      });
+  
+      SetItem(LOCAL_STORAGE_KEYS.seminar, newSeminarsArray);
     }
-}
+  }
 
 
 function getSeminarById(id){
