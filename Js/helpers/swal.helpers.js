@@ -1,19 +1,19 @@
- const SwalAlerts = {
+const SwalAlerts = {
     error: (text) =>
-    Swal.fire({
-        title: "Ocurrio un Error",
+      Swal.fire({
+        title: "Ocurrió un error!",
         text: text,
-        icon:"error",
-        confirmButtonText: "Ok", 
-    }),
+        icon: "error",
+        confirmButtonText: "Ok",
+      }),
     succes: (text, title) => {
-        Swal.fire({
-            title: title,
-            text: text,
-            icon:"success",
-            confirmButtonText: "Ok", 
-        })
-    } 
- }
-
- export {SwalAlerts}
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
+    },
+  };
+  
+  export { SwalAlerts };
