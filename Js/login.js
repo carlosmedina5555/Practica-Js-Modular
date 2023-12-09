@@ -1,6 +1,6 @@
-import { login, logout } from "./services/user.app.js";
-import { SwalAlerts } from "./helpers/swal.helper.js";
-import { validateIfIsEmpty } from "./helpers/string.helper.validator.js";
+import { login, logout } from "./Service/user.app.js";
+import { SwalAlerts } from "./helpers/swal.helpers.js";
+import { validateIfIsEmpty } from "./helpers/string.helpers.validate.js";
 import { ERROR_MESSAGES } from "./configurations/messages.config.js";
 //#region  Variables
 const email = document.getElementById("email");

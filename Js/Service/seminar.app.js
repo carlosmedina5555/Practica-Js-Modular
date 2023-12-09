@@ -1,4 +1,4 @@
-import { SetItem, GetItem } from "./local-storage.app.js";
+import { SetItem, GetItem } from "./local-storage-logic.js";
 import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 
 //#region  Get User (R - Read - Leer)

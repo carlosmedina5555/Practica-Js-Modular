@@ -1,9 +1,9 @@
-import { getEmojiText } from "./helpers/string.helper.convert.js";
+import { getEmojiText } from "./helpers/string.helpers.convert.js";
 import {
   createSeminar, deleteSeminar, getSeminarById, updateSeminar, getSeminars,
-} from "./services/seminars.app.js";
-import { getUsers } from "./services/user.app.js";
-import { GetItem } from "../js/services/local-storage.app.js";
+} from "./Service/seminar.app.js";
+import { getUsers } from "./Service/user.app.js";
+import { GetItem } from "./Service/local-storage-logic.js";
 import { LOCAL_STORAGE_KEYS } from "./configurations/keys.config.js";
 import { ROLES_VALUES } from "./configurations/seed.js";
 

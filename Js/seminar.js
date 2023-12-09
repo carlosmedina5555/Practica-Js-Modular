@@ -1,4 +1,4 @@
-import { getSeminars } from "./services/seminars.app.js";
+import { getSeminars } from "./Service/seminar.app.js";
 
 const seminars = getSeminars();
 const divContainer = document.getElementById("card-container");

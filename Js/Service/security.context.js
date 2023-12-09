@@ -1,6 +1,6 @@
 import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 import { ROLES_VALUES } from "../configurations/seed.js";
-import { GetItem } from "./local-storage.app.js";
+import { GetItem } from "./local-storage-logic.js";
 
 const userLogged = GetItem(LOCAL_STORAGE_KEYS.activeUser);
 const adminItem = document.getElementById("admin-item");

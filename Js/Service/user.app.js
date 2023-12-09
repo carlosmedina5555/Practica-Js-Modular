@@ -1,17 +1,16 @@
-
-import { SetItem, GetItem, RemoveItem } from "./local-storage.app.js";
+import { SetItem, GetItem, RemoveItem } from "./local-storage-logic.js";
 import { LOCAL_STORAGE_KEYS } from "../configurations/keys.config.js";
 import { ERROR_MESSAGES } from "../configurations/messages.config.js";
-import { GetError } from "../helpers/error.helpers.js";
+import { getError } from "../helpers/error.helpers.js";
 import { INITIAL_ROLES, ROLES_VALUES } from "../configurations/seed.js";
 
 //#region  Errores
 function GetErrorNotFound() {
-  return GetError(ERROR_MESSAGES.not_found);
+  return getError(ERROR_MESSAGES.not_found);
 }
 
 function GetErrorNotMatch() {
-  return GetError(ERROR_MESSAGES.not_match);
+  return getError(ERROR_MESSAGES.not_match);
 }
 //#endregion
 

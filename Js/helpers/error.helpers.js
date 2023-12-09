@@ -1,9 +1,9 @@
-function GetError (message){
+function getError (message){
     return{
         ok: false,
         error: message,
         } 
 }
 
-export { GetError}
+export { getError }
 

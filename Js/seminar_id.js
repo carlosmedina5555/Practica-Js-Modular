@@ -1,4 +1,4 @@
-import { getSeminarById } from "./services/seminars.app.js";
+import { getSeminarById } from "./Service/seminar.app.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get("id");
